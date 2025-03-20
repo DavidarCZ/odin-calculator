@@ -37,6 +37,24 @@ function operate(first, op, second)
             return null;
     }
 }
+
+function updateDisplay()
+{
+    let display = document.querySelector(".display")
+    display.textContent = input;
+}
+
+function writeNumber(event)
+{
+    if (event.target.classList.contains('btn')) {
+        if (input == "0") {
+            input = event.target.textContent;
+        } else {
+            input += event.target.textContent;
+        }
+        updateDisplay();
+    }
+}
 //////////////////////////////////////////////////
 //Variables
 //////////////////////////////////////////////////
@@ -44,3 +62,10 @@ function operate(first, op, second)
 let firstNumber;
 let operator;
 let secondNumber;
+let input = "0";
+
+//////////////////////////////////////////////////
+//Listeners
+//////////////////////////////////////////////////
+let buttons = document.querySelector('.numbers');
+buttons.addEventListener("click",writeNumber)
