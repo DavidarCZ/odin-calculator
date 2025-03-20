@@ -26,13 +26,13 @@ function operate(first, op, second)
     switch (op)
     {
         case '+':
-            return add(first,second);
+            return add(first,second).toFixed(2);
         case '-':
-            return subtract(first,second);
+            return subtract(first,second).toFixed(2);
         case '*':
-            return multiply(first,second);
+            return multiply(first,second).toFixed(2);
         case '/':
-            return divide(first,second);  
+            return divide(first,second).toFixed(2);  
         default:
             return null;
     }
@@ -55,6 +55,27 @@ function writeNumber(event)
         updateDisplay();
     }
 }
+
+function operatorClicked(event)
+{
+    if (firstNumber == null)
+    {
+        firstNumber = Number(input);
+        operator = event.target.textContent;
+        input = "0";
+        updateDisplay();
+    }
+    else if (firstNumber != null && operator != null)
+    {
+        secondNumber = Number(input);
+        firstNumber = operate(firstNumber, operator, secondNumber);
+        operator = event.target.textContent;
+        input = "0";
+        updateDisplay();
+    }
+}
+
+
 //////////////////////////////////////////////////
 //Variables
 //////////////////////////////////////////////////
@@ -69,3 +90,7 @@ let input = "0";
 //////////////////////////////////////////////////
 let buttons = document.querySelector('.numbers');
 buttons.addEventListener("click",writeNumber)
+
+let operators = document.querySelectorAll('.operator');
+operators.forEach(operator => operator.addEventListener('click', operatorClicked));
+
