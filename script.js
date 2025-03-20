@@ -87,6 +87,15 @@ function equalsClicked()
     }
 }
 
+function clearClicked()
+{
+    firstNumber = null;
+    operator = null;
+    secondNumber = null;
+    input = "0";
+    updateDisplay();
+}
+
 //////////////////////////////////////////////////
 //Variables
 //////////////////////////////////////////////////
@@ -108,3 +117,5 @@ operators.forEach(operator => operator.addEventListener('click', operatorClicked
 let equals = document.querySelector('.equals');
 equals.addEventListener('click', equalsClicked);
 
+let clear = document.querySelector('.clear');
+clear.addEventListener('click', clearClicked);
