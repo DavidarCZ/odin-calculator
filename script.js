@@ -75,6 +75,17 @@ function operatorClicked(event)
     }
 }
 
+function equalsClicked()
+{
+    if (firstNumber != null && operator != null)
+    {
+        secondNumber = Number(input);
+        firstNumber = operate(firstNumber, operator, secondNumber);
+        operator = null;
+        input = firstNumber;
+        updateDisplay();
+    }
+}
 
 //////////////////////////////////////////////////
 //Variables
@@ -93,4 +104,7 @@ buttons.addEventListener("click",writeNumber)
 
 let operators = document.querySelectorAll('.operator');
 operators.forEach(operator => operator.addEventListener('click', operatorClicked));
+
+let equals = document.querySelector('.equals');
+equals.addEventListener('click', equalsClicked);
 
