@@ -66,6 +66,7 @@ body {
     margin: 5px;
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
 }
 
 .row-1,.row-2,.row-3 {
@@ -85,4 +86,9 @@ body {
     height: 23%;
     margin: 10px;
     align-self: center;
+}
+
+.signs .btn{
+    width: 90%;
+    height: 12%;
 }
