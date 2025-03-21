@@ -23,19 +23,28 @@ function divide(first, second)
 
 function operate(first, op, second)
 {
+    let result;
     switch (op)
     {
         case '+':
-            return add(first,second).toFixed(2);
+            result = add(first, second);
+            break;
         case '-':
-            return subtract(first,second).toFixed(2);
+            result = subtract(first, second);
+            break;
         case '*':
-            return multiply(first,second).toFixed(2);
+            result = multiply(first, second);
+            break;
         case '/':
-            return divide(first,second).toFixed(2);  
+            if (second === 0) {
+                return "Nice try!";
+            }
+            result = divide(first, second);
+            break;
         default:
             return null;
     }
+    return Number.isInteger(result) ? result : result.toFixed(5);
 }
 
 function updateDisplay()
@@ -65,13 +74,17 @@ function operatorClicked(event)
         input = "0";
         updateDisplay();
     }
-    else if (firstNumber != null && operator != null)
+    else if (input !== "0")
     {
         secondNumber = Number(input);
         firstNumber = operate(firstNumber, operator, secondNumber);
         operator = event.target.textContent;
         input = "0";
         updateDisplay();
+    }
+    else
+    {
+        operator = event.target.textContent;
     }
 }
 
@@ -84,6 +97,9 @@ function equalsClicked()
         operator = null;
         input = firstNumber;
         updateDisplay();
+        input = "0";
+        firstNumber = null;
+        secondNumber = null;
     }
 }
 
